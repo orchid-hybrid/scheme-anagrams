@@ -3,6 +3,16 @@
         (rnrs sorting (6))
         (trie) (dictionary))
 
+
+(define (filter p l)
+  (if (null? l)
+      '()
+      (if (p (car l))
+          (cons (car l) (filter p (cdr l)))
+          (filter p (cdr l)))))
+
+
+
 (define dict (load-dictionary))
 
 (define (remove-spaces list)
